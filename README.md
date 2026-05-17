@@ -36,3 +36,14 @@ This project implements a classic enterprise **Medallion Architecture** to isola
 2026-05-17 22:36:38,114 - INFO -  Interactive heatmap saved successfully to: data/visualizations/london_cafe_heatmap.html
 2026-05-17 22:36:38,179 - INFO -  [Orchestrator] Step completed successfully: scripts/visualize_map.py
 2026-05-17 22:36:38,179 - INFO -  ==================== PIPELINE EXECUTION COMPLETE IN 4.95s ====================
+```
+
+## 🗺️ What's Next? Ideas for Future Development
+### Automated Operational Alerting: 
+Integrate a secure webhook notification pipeline to push immediate system monitoring alerts to an operations channel (like Discord or Slack) the second the master orchestrator logs a CRITICAL step failure.
+
+### Multi-City Parameterization: 
+Refactor the orchestrator array to dynamically accept a list of multiple global cities, handling parallel data extraction and rendering isolated geographic dashboards seamlessly.
+
+### Containerization: 
+Wrap the runtime environment, localized Python dependencies, and filesystem directory structures into a lightweight Docker container to achieve zero-config deployment.
