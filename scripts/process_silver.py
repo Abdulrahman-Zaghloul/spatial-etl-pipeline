@@ -41,6 +41,10 @@ def transform_bronze_to_silver(city="London"):
         if lat is None or lon is None:
             continue
             
+        # 🛡️ SPATIAL DATA QUALITY FILTER: Drop any rogue points outside the UK boundary
+        if not (49.0 <= lat <= 61.0 and -8.0 <= lon <= 2.0):
+            continue
+            
         cleaned_records.append({
             "osm_id": el.get("id"),
             "name": name,

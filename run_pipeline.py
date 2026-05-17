@@ -42,7 +42,8 @@ def main():
     pipeline_steps = [
         "scripts/extract_bronze.py",
         "scripts/process_silver.py",
-        "scripts/aggregate_gold.py"
+        "scripts/aggregate_gold.py",
+        "scripts/visualize_map.py"
     ]
     
     for step in pipeline_steps:

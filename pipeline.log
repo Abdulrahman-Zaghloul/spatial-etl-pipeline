@@ -47,3 +47,113 @@
 2026-05-17 20:34:29,134 - INFO - 💪 [Orchestrator] Step completed successfully: scripts/aggregate_gold.py (Took 0.51s)
 
 2026-05-17 20:34:29,134 - INFO - 🏆 ==================== PIPELINE EXECUTION COMPLETE IN 4.92s ====================
+2026-05-17 22:33:57,935 - INFO - 🏁 ==================== STARTING MASTER PIPELINE RUN ====================
+2026-05-17 22:33:57,935 - INFO - 🚀 [Orchestrator] Starting execution step: scripts/extract_bronze.py
+2026-05-17 22:33:58,024 - INFO - 📡 Sending request to Overpass API for London...
+2026-05-17 22:34:06,443 - INFO - ✅ Success! Raw data saved to: data/bronze/london_cafes_raw.json
+2026-05-17 22:34:06,465 - INFO - 💪 [Orchestrator] Step completed successfully: scripts/extract_bronze.py (Took 8.53s)
+
+2026-05-17 22:34:06,465 - INFO - 🚀 [Orchestrator] Starting execution step: scripts/process_silver.py
+2026-05-17 22:34:06,859 - INFO - 🔄 Loading raw Bronze data from data/bronze/london_cafes_raw.json...
+2026-05-17 22:34:06,915 - INFO - 📊 Found 4748 raw cafe records.
+2026-05-17 22:34:06,919 - INFO - 🧠 Creating spatial geometry point objects...
+2026-05-17 22:34:06,948 - INFO - 💾 Saving clean spatial file to data/silver/london_cafes_clean.geojson...
+2026-05-17 22:34:07,060 - INFO - Created 4,748 records
+2026-05-17 22:34:07,060 - INFO - ✅ Success! Silver Layer is built and validated.
+2026-05-17 22:34:07,122 - INFO - 💪 [Orchestrator] Step completed successfully: scripts/process_silver.py (Took 0.66s)
+
+2026-05-17 22:34:07,123 - INFO - 🚀 [Orchestrator] Starting execution step: scripts/aggregate_gold.pyscripts/visualize_map.py
+2026-05-17 22:34:07,134 - ERROR - 💥 [Orchestrator] Critical Failure in step: scripts/aggregate_gold.pyscripts/visualize_map.py (Exit code: 2)
+2026-05-17 22:34:07,135 - CRITICAL - 🛑 [Orchestrator] Pipeline execution halted due to upstream failure.
+2026-05-17 22:35:39,032 - INFO - 🏁 ==================== STARTING MASTER PIPELINE RUN ====================
+2026-05-17 22:35:39,033 - INFO - 🚀 [Orchestrator] Starting execution step: scripts/extract_bronze.py
+2026-05-17 22:35:39,131 - INFO - 📡 Sending request to Overpass API for London...
+2026-05-17 22:35:42,735 - INFO - ✅ Success! Raw data saved to: data/bronze/london_cafes_raw.json
+2026-05-17 22:35:42,760 - INFO - 💪 [Orchestrator] Step completed successfully: scripts/extract_bronze.py (Took 3.73s)
+
+2026-05-17 22:35:42,760 - INFO - 🚀 [Orchestrator] Starting execution step: scripts/process_silver.py
+2026-05-17 22:35:43,039 - INFO - 🔄 Loading raw Bronze data from data/bronze/london_cafes_raw.json...
+2026-05-17 22:35:43,055 - INFO - 📊 Found 4748 raw cafe records.
+2026-05-17 22:35:43,060 - INFO - 🧠 Creating spatial geometry point objects...
+2026-05-17 22:35:43,089 - INFO - 💾 Saving clean spatial file to data/silver/london_cafes_clean.geojson...
+2026-05-17 22:35:43,211 - INFO - Created 4,748 records
+2026-05-17 22:35:43,211 - INFO - ✅ Success! Silver Layer is built and validated.
+2026-05-17 22:35:43,276 - INFO - 💪 [Orchestrator] Step completed successfully: scripts/process_silver.py (Took 0.52s)
+
+2026-05-17 22:35:43,276 - INFO - 🚀 [Orchestrator] Starting execution step: scripts/aggregate_gold.pyscripts/visualize_map.py
+2026-05-17 22:35:43,289 - ERROR - 💥 [Orchestrator] Critical Failure in step: scripts/aggregate_gold.pyscripts/visualize_map.py (Exit code: 2)
+2026-05-17 22:35:43,290 - CRITICAL - 🛑 [Orchestrator] Pipeline execution halted due to upstream failure.
+2026-05-17 22:36:33,224 - INFO - 🏁 ==================== STARTING MASTER PIPELINE RUN ====================
+2026-05-17 22:36:33,224 - INFO - 🚀 [Orchestrator] Starting execution step: scripts/extract_bronze.py
+2026-05-17 22:36:33,321 - INFO - 📡 Sending request to Overpass API for London...
+2026-05-17 22:36:36,710 - INFO - ✅ Success! Raw data saved to: data/bronze/london_cafes_raw.json
+2026-05-17 22:36:36,735 - INFO - 💪 [Orchestrator] Step completed successfully: scripts/extract_bronze.py (Took 3.51s)
+
+2026-05-17 22:36:36,736 - INFO - 🚀 [Orchestrator] Starting execution step: scripts/process_silver.py
+2026-05-17 22:36:37,045 - INFO - 🔄 Loading raw Bronze data from data/bronze/london_cafes_raw.json...
+2026-05-17 22:36:37,063 - INFO - 📊 Found 4748 raw cafe records.
+2026-05-17 22:36:37,067 - INFO - 🧠 Creating spatial geometry point objects...
+2026-05-17 22:36:37,096 - INFO - 💾 Saving clean spatial file to data/silver/london_cafes_clean.geojson...
+2026-05-17 22:36:37,173 - INFO - Created 4,748 records
+2026-05-17 22:36:37,173 - INFO - ✅ Success! Silver Layer is built and validated.
+2026-05-17 22:36:37,235 - INFO - 💪 [Orchestrator] Step completed successfully: scripts/process_silver.py (Took 0.50s)
+
+2026-05-17 22:36:37,235 - INFO - 🚀 [Orchestrator] Starting execution step: scripts/aggregate_gold.py
+2026-05-17 22:36:37,508 - INFO - 🥇 Loading clean Silver layer from data/silver/london_cafes_clean.geojson...
+2026-05-17 22:36:37,568 - INFO - 🧮 Executing spatial binning logic...
+2026-05-17 22:36:37,571 - INFO - 💾 Exporting Gold business intelligence layer to data/gold/london_cafe_density.csv...
+2026-05-17 22:36:37,574 - INFO - 📊 Top 5 Highest Density Competitor Clusters:
+2026-05-17 22:36:37,576 - INFO -    grid_lat  grid_lon  cafe_count
+2026-05-17 22:36:37,576 - INFO -       51.51     -0.13          90
+2026-05-17 22:36:37,576 - INFO -       51.52     -0.08          55
+2026-05-17 22:36:37,576 - INFO -       51.52     -0.12          52
+2026-05-17 22:36:37,576 - INFO -       51.53     -0.13          47
+2026-05-17 22:36:37,576 - INFO -       51.51     -0.08          46
+2026-05-17 22:36:37,576 - INFO - ✅ Success! Gold Layer is complete and ready for business analysis.
+2026-05-17 22:36:37,631 - INFO - 💪 [Orchestrator] Step completed successfully: scripts/aggregate_gold.py (Took 0.40s)
+
+2026-05-17 22:36:37,631 - INFO - 🚀 [Orchestrator] Starting execution step: scripts/visualize_map.py
+2026-05-17 22:36:38,105 - INFO - 🗺️ Loading Gold aggregation data from data/gold/london_cafe_density.csv...
+2026-05-17 22:36:38,107 - INFO - 🎨 Preparing coordinates for heat layer map rendering...
+2026-05-17 22:36:38,108 - INFO - 📌 Generating base map layer...
+2026-05-17 22:36:38,114 - INFO - 💾 Interactive heatmap saved successfully to: data/visualizations/london_cafe_heatmap.html
+2026-05-17 22:36:38,179 - INFO - 💪 [Orchestrator] Step completed successfully: scripts/visualize_map.py (Took 0.55s)
+
+2026-05-17 22:36:38,179 - INFO - 🏆 ==================== PIPELINE EXECUTION COMPLETE IN 4.95s ====================
+2026-05-17 22:43:33,652 - INFO - 🏁 ==================== STARTING MASTER PIPELINE RUN ====================
+2026-05-17 22:43:33,653 - INFO - 🚀 [Orchestrator] Starting execution step: scripts/extract_bronze.py
+2026-05-17 22:43:33,747 - INFO - 📡 Sending request to Overpass API for London...
+2026-05-17 22:43:37,655 - INFO - ✅ Success! Raw data saved to: data/bronze/london_cafes_raw.json
+2026-05-17 22:43:37,676 - INFO - 💪 [Orchestrator] Step completed successfully: scripts/extract_bronze.py (Took 4.02s)
+
+2026-05-17 22:43:37,676 - INFO - 🚀 [Orchestrator] Starting execution step: scripts/process_silver.py
+2026-05-17 22:43:38,087 - INFO - 🔄 Loading raw Bronze data from data/bronze/london_cafes_raw.json...
+2026-05-17 22:43:38,144 - INFO - 📊 Found 4748 raw cafe records.
+2026-05-17 22:43:38,148 - INFO - 🧠 Creating spatial geometry point objects...
+2026-05-17 22:43:38,175 - INFO - 💾 Saving clean spatial file to data/silver/london_cafes_clean.geojson...
+2026-05-17 22:43:38,282 - INFO - Created 4,670 records
+2026-05-17 22:43:38,282 - INFO - ✅ Success! Silver Layer is built and validated.
+2026-05-17 22:43:38,348 - INFO - 💪 [Orchestrator] Step completed successfully: scripts/process_silver.py (Took 0.67s)
+
+2026-05-17 22:43:38,348 - INFO - 🚀 [Orchestrator] Starting execution step: scripts/aggregate_gold.py
+2026-05-17 22:43:38,658 - INFO - 🥇 Loading clean Silver layer from data/silver/london_cafes_clean.geojson...
+2026-05-17 22:43:38,716 - INFO - 🧮 Executing spatial binning logic...
+2026-05-17 22:43:38,719 - INFO - 💾 Exporting Gold business intelligence layer to data/gold/london_cafe_density.csv...
+2026-05-17 22:43:38,721 - INFO - 📊 Top 5 Highest Density Competitor Clusters:
+2026-05-17 22:43:38,722 - INFO -    grid_lat  grid_lon  cafe_count
+2026-05-17 22:43:38,722 - INFO -       51.51     -0.13          90
+2026-05-17 22:43:38,722 - INFO -       51.52     -0.08          55
+2026-05-17 22:43:38,722 - INFO -       51.52     -0.12          52
+2026-05-17 22:43:38,722 - INFO -       51.53     -0.13          47
+2026-05-17 22:43:38,723 - INFO -       51.51     -0.08          46
+2026-05-17 22:43:38,723 - INFO - ✅ Success! Gold Layer is complete and ready for business analysis.
+2026-05-17 22:43:38,782 - INFO - 💪 [Orchestrator] Step completed successfully: scripts/aggregate_gold.py (Took 0.43s)
+
+2026-05-17 22:43:38,782 - INFO - 🚀 [Orchestrator] Starting execution step: scripts/visualize_map.py
+2026-05-17 22:43:39,391 - INFO - 🗺️ Loading Gold aggregation data from data/gold/london_cafe_density.csv...
+2026-05-17 22:43:39,393 - INFO - 🎨 Preparing coordinates for heat layer map rendering...
+2026-05-17 22:43:39,394 - INFO - 📌 Generating base map layer...
+2026-05-17 22:43:39,401 - INFO - 💾 Interactive heatmap saved successfully to: data/visualizations/london_cafe_heatmap.html
+2026-05-17 22:43:39,498 - INFO - 💪 [Orchestrator] Step completed successfully: scripts/visualize_map.py (Took 0.72s)
+
+2026-05-17 22:43:39,499 - INFO - 🏆 ==================== PIPELINE EXECUTION COMPLETE IN 5.85s ====================
