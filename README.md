@@ -16,8 +16,9 @@ To ensure absolute data integrity, the pipeline isolates processes into three cl
    * Action: Reads raw JSON, drops invalid records missing coordinate data, parses attributes, and uses **GeoPandas** to construct formal spatial point geometry mapped to the universal global GPS standard (**EPSG:4326**). Outputs clean GeoJSON files.
 
 3. **Gold Layer (Business Intelligence):**
-   * *[In Progress]* Aggregating refined spatial data into localized density tables to isolate market opportunities.
-
+   * Script: `scripts/aggregate_gold.py`
+   * Action: Implements custom **Spatial Binning** logic by rounding geographic coordinates to two decimal places. This mathematically segments London into localized grid zones (~1.1km x 1.1km). It then aggregates the 4,747 records using a structured `groupby` count to expose the densest competitor clusters and locate market "dead zones" for business intelligence. Outputs a refined CSV dataset.
+   
 ## 🛠️ Tech Stack & Skills Demonstrated
 * **Operating System:** Ubuntu Linux Environment
 * **Language/Libraries:** Python 3, Requests, Pandas, GeoPandas, Shapely
