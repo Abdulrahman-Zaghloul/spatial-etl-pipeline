@@ -17,3 +17,33 @@
 2026-05-17 20:24:52,234 - INFO -       51.53     -0.13          47
 2026-05-17 20:24:52,234 - INFO -       51.51     -0.08          46
 2026-05-17 20:24:52,234 - INFO - ✅ Success! Gold Layer is complete and ready for business analysis.
+2026-05-17 20:34:24,217 - INFO - 🏁 ==================== STARTING MASTER PIPELINE RUN ====================
+2026-05-17 20:34:24,217 - INFO - 🚀 [Orchestrator] Starting execution step: scripts/extract_bronze.py
+2026-05-17 20:34:24,310 - INFO - 📡 Sending request to Overpass API for London...
+2026-05-17 20:34:28,142 - INFO - ✅ Success! Raw data saved to: data/bronze/london_cafes_raw.json
+2026-05-17 20:34:28,162 - INFO - 💪 [Orchestrator] Step completed successfully: scripts/extract_bronze.py (Took 3.94s)
+
+2026-05-17 20:34:28,162 - INFO - 🚀 [Orchestrator] Starting execution step: scripts/process_silver.py
+2026-05-17 20:34:28,438 - INFO - 🔄 Loading raw Bronze data from data/bronze/london_cafes_raw.json...
+2026-05-17 20:34:28,452 - INFO - 📊 Found 4748 raw cafe records.
+2026-05-17 20:34:28,456 - INFO - 🧠 Creating spatial geometry point objects...
+2026-05-17 20:34:28,482 - INFO - 💾 Saving clean spatial file to data/silver/london_cafes_clean.geojson...
+2026-05-17 20:34:28,562 - INFO - Created 4,748 records
+2026-05-17 20:34:28,562 - INFO - ✅ Success! Silver Layer is built and validated.
+2026-05-17 20:34:28,619 - INFO - 💪 [Orchestrator] Step completed successfully: scripts/process_silver.py (Took 0.46s)
+
+2026-05-17 20:34:28,619 - INFO - 🚀 [Orchestrator] Starting execution step: scripts/aggregate_gold.py
+2026-05-17 20:34:28,951 - INFO - 🥇 Loading clean Silver layer from data/silver/london_cafes_clean.geojson...
+2026-05-17 20:34:29,059 - INFO - 🧮 Executing spatial binning logic...
+2026-05-17 20:34:29,062 - INFO - 💾 Exporting Gold business intelligence layer to data/gold/london_cafe_density.csv...
+2026-05-17 20:34:29,066 - INFO - 📊 Top 5 Highest Density Competitor Clusters:
+2026-05-17 20:34:29,068 - INFO -    grid_lat  grid_lon  cafe_count
+2026-05-17 20:34:29,069 - INFO -       51.51     -0.13          90
+2026-05-17 20:34:29,069 - INFO -       51.52     -0.08          55
+2026-05-17 20:34:29,069 - INFO -       51.52     -0.12          52
+2026-05-17 20:34:29,069 - INFO -       51.53     -0.13          47
+2026-05-17 20:34:29,069 - INFO -       51.51     -0.08          46
+2026-05-17 20:34:29,069 - INFO - ✅ Success! Gold Layer is complete and ready for business analysis.
+2026-05-17 20:34:29,134 - INFO - 💪 [Orchestrator] Step completed successfully: scripts/aggregate_gold.py (Took 0.51s)
+
+2026-05-17 20:34:29,134 - INFO - 🏆 ==================== PIPELINE EXECUTION COMPLETE IN 4.92s ====================
