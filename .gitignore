@@ -1,0 +1,12 @@
+# Ignore python virtual environments
+venv/
+__pycache__/
+*.pyc
+
+# Ignore local messy data files 
+data/bronze/*
+data/silver/*
+data/gold/*
+
+# Allow tracking of the folder structure via empty .gitkeep files
+!data/**/.gitkeep
