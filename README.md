@@ -1,26 +1,38 @@
+# End-to-End Spatial ETL Pipeline (London Cafe Density Analysis)
 
-# End-to-End Spatial Data Engineering Pipeline
+A production-grade, three-tiered data engineering pipeline that ingests, cleans, processes, and visualizes geographic data from the OpenStreetMap (OSM) API. Built entirely on Ubuntu Linux using Python and a virtualized Medallion Architecture workflow.
 
-A production-focused geospatial ETL (Extract, Transform, Load) pipeline built to demonstrate scalable spatial data engineering principles on Linux.
+## 🏗️ System Architecture
 
-This project simulates a high-value business case: automating the collection, cleaning, and structuring of location intelligence data (competitor coffee shops in London) to drive commercial real estate and market analysis decisions.
+This project implements a classic enterprise **Medallion Architecture** to isolate data processing stages:
 
-## 🏗️ Data Flow Architecture: The Medallion Framework
-To ensure absolute data integrity, the pipeline isolates processes into three clear layers:
+> **[Overpass API]** ──(Ingest Raw JSON)──> **[Bronze Layer: Raw Data]** > ──(Spatial Quality Filter)──> **[Silver Layer: Cleaned GeoJSON]** > ──(Mathematical Binning)──> **[Gold Layer: Aggregated Density]** > ──(Folium Engine Render)──> **[Interactive HTML Heatmap]**
 
-1. **Bronze Layer (Raw Ingestion):** * Script: `scripts/extract_bronze.py`
-   * Action: Connects to the OpenStreetMap Overpass API and downloads raw JSON payloads. Implements custom User-Agent headers to bypass automated anti-bot security blocks (HTTP 406 errors).
-   
-2. **Silver Layer (Spatial Refining):**
-   * Script: `scripts/process_silver.py`
-   * Action: Reads raw JSON, drops invalid records missing coordinate data, parses attributes, and uses **GeoPandas** to construct formal spatial point geometry mapped to the universal global GPS standard (**EPSG:4326**). Outputs clean GeoJSON files.
+* **Bronze Layer (`data/bronze/`)**: Ingests raw, nested JSON payloads directly from the Overpass API via coordinate querying.
+* **Silver Layer (`data/silver/`)**: Parses raw elements, extracts spatial geometries, applies a strict geographic bounding box filter, and structuralizes data into validated GeoJSON using `geopandas`.
+* **Gold Layer (`data/gold/`)**: Executes data binning by rounding coordinates to 2 decimal places (creating ~1.1km x 1.1km zones) and aggregating data into a competitive density matrix (`.csv`).
+* **Visualization Layer (`data/visualizations/`)**: Translates Gold metrics into an interactive LeafletJS-powered spatial heatmap (`.html`) for business intelligence.
 
-3. **Gold Layer (Business Intelligence):**
-   * Script: `scripts/aggregate_gold.py`
-   * Action: Implements custom **Spatial Binning** logic by rounding geographic coordinates to two decimal places. This mathematically segments London into localized grid zones (~1.1km x 1.1km). It then aggregates the 4,747 records using a structured `groupby` count to expose the densest competitor clusters and locate market "dead zones" for business intelligence. Outputs a refined CSV dataset.
-   
-## 🛠️ Tech Stack & Skills Demonstrated
-* **Operating System:** Ubuntu Linux Environment
-* **Language/Libraries:** Python 3, Requests, Pandas, GeoPandas, Shapely
-* **Architecture:** Three-tier Medallion Architecture (Bronze ➡️ Silver ➡️ Gold)
-* **Version Control:** Git & GitHub Best Practices (Atomic Commits, Credential Caching)
+## 🚀 Key Engineering Features
+
+* **Centralized Production Logging**: Replaced standard out print statements with Python's native `logging` library. All pipeline states, row counts, API latency metrics, and errors are captured sequentially into a single `pipeline.log` file with exact timestamps.
+* **Master Automation Orchestrator**: Developed a central master script (`run_pipeline.py`) that executes steps as sub-processes, monitors execution runtimes, and features defensive error handling to safely halt downstream processes upon upstream script failure.
+* **Defensive Spatial Data Engineering**: Encountered a data quality anomaly where matching boundary names pulled a rogue cluster in northern Scandinavia. Engineered a coordinate-based bounding box filter inside the Silver tier (`49.0 <= lat <= 61.0` and `-8.0 <= lon <= 2.0`) to instantly drop geographical noise and guarantee dataset integrity.
+
+## 🛠️ Technology Stack
+* **OS**: Ubuntu Linux 
+* **Language**: Python 3 (Virtual Environment managed)
+* **Libraries**: GeoPandas, Pandas, Folium, Shapely, Requests
+* **Orchestration**: Python Subprocess Engine
+* **Version Control**: Git / GitHub
+
+## 📊 Pipeline Observability & Output
+
+### Automated Execution Logs
+```text
+2026-05-17 22:36:37,576 - INFO -  Success! Gold Layer is complete and ready for business analysis.
+2026-05-17 22:36:37,631 - INFO -  [Orchestrator] Step completed successfully: scripts/aggregate_gold.py
+2026-05-17 22:36:37,631 - INFO -  [Orchestrator] Starting execution step: scripts/visualize_map.py
+2026-05-17 22:36:38,114 - INFO -  Interactive heatmap saved successfully to: data/visualizations/london_cafe_heatmap.html
+2026-05-17 22:36:38,179 - INFO -  [Orchestrator] Step completed successfully: scripts/visualize_map.py
+2026-05-17 22:36:38,179 - INFO -  ==================== PIPELINE EXECUTION COMPLETE IN 4.95s ====================
